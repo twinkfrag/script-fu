@@ -24,3 +24,23 @@
 		)
 	)
 )
+(define 
+	(load-string-from-file input)
+	(with-input-from-file input ;スコープ内でデフォルトポートの変更
+		(lambda ()
+			(let loop
+				(
+					(ls '())
+					(c (read-char))
+				)
+				(if (eof-object? c)
+					(list->string (reverse ls)) ; output
+					(loop 
+						(cons c ls) 
+						(read-char)
+					)
+				)
+			)
+		)
+	)
+)
