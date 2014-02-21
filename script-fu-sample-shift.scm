@@ -13,17 +13,17 @@
 					(save-file (string-append load-file "-move.png"))
 					(offset '(20 20))
 					(size '(1280 720))
-					(image (car (gimp-image-new (car size) (cadr size) RGB)))
-					(layer-back (car (gimp-layer-new image (car size) (cadr size) RGB-IMAGE "”wŒi" 0 NORMAL-MODE)))
-					(layer-img (car (gimp-file-load-layer RUN-NONINTERACTIVE image load-file)))
+					(image (car (gimp-image-new (car size) (cadr size) RGB))) ;; image‚ğì¬
+					(layer-back (car (gimp-layer-new image (car size) (cadr size) RGB-IMAGE "”wŒi" 0 NORMAL-MODE))) ;; ”wŒiƒŒƒCƒ„[‚ğì¬
+					(layer-img (car (gimp-file-load-layer RUN-NONINTERACTIVE image load-file))) ;; ”wŒiƒŒƒCƒ„[‚ğì¬
 					(disp (car (gimp-display-new image)))
 				)
-				(gimp-image-insert-layer image layer-back 0 0)
+				(gimp-image-insert-layer image layer-back 0 0) ;; ƒŒƒCƒ„[‚ğimage‚ÉŠÖ˜A‚Ã‚¯
 				(gimp-image-insert-layer image layer-img 0 0)
-				(gimp-layer-set-offsets layer-img (car offset) (cadr offset))
-				(set! layer-img (car (gimp-image-merge-visible-layers image EXPAND-AS-NECESSARY)))
-				(gimp-file-save RUN-NONINTERACTIVE image layer-img save-file load-file)
-				(gimp-display-delete disp)
+				(gimp-layer-set-offsets layer-img (car offset) (cadr offset)) ;; ƒŒƒCƒ„[‚ğ(20 20)‚ÉˆÚ“®
+				(set! layer-img (car (gimp-image-merge-visible-layers image EXPAND-AS-NECESSARY))) ;; png•Û‘¶‚Ì‚½‚ßƒŒƒCƒ„[‚ğŒ‹‡
+				(gimp-file-save RUN-NONINTERACTIVE image layer-img save-file load-file) ;; •Û‘¶
+				(gimp-display-delete disp) ;; •Â‚¶‚é
 			)
 		) 
 		filename
