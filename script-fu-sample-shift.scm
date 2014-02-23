@@ -1,33 +1,33 @@
 (define
 	(script-fu-sample-shift)
 		(let*
-		(
-			(filename '(
-				"F:\\Owner\\Dropbox\\[archive]\\cocoro\\GRAPHIC\\move\\KanColle-131231-21152344.png"
-				"F:\\Owner\\Dropbox\\[archive]\\cocoro\\GRAPHIC\\move\\KanColle-140101-07224489.png"
-			))
-		)
-		(map (lambda(load-file) 
-			(let*
-				(
-					(save-file (string-append load-file "-move.png"))
-					(offset '(20 20))
-					(size '(1280 720))
-					(image (car (gimp-image-new (car size) (cadr size) RGB))) ;; image‚ğì¬
-					(layer-back (car (gimp-layer-new image (car size) (cadr size) RGB-IMAGE "”wŒi" 0 NORMAL-MODE))) ;; ”wŒiƒŒƒCƒ„[‚ğì¬
-					(layer-img (car (gimp-file-load-layer RUN-NONINTERACTIVE image load-file))) ;; ”wŒiƒŒƒCƒ„[‚ğì¬
-					(disp (car (gimp-display-new image)))
-				)
-				(gimp-image-insert-layer image layer-back 0 0) ;; ƒŒƒCƒ„[‚ğimage‚ÉŠÖ˜A‚Ã‚¯
-				(gimp-image-insert-layer image layer-img 0 0)
-				(gimp-layer-set-offsets layer-img (car offset) (cadr offset)) ;; ƒŒƒCƒ„[‚ğ(20 20)‚ÉˆÚ“®
-				(set! layer-img (car (gimp-image-merge-visible-layers image EXPAND-AS-NECESSARY))) ;; png•Û‘¶‚Ì‚½‚ßƒŒƒCƒ„[‚ğŒ‹‡
-				(gimp-file-save RUN-NONINTERACTIVE image layer-img save-file load-file) ;; •Û‘¶
-				(gimp-display-delete disp) ;; •Â‚¶‚é
+			(
+				(filename '(
+					"F:\\Owner\\Dropbox\\[archive]\\cocoro\\GRAPHIC\\move\\KanColle-131231-21152344.png"
+					"F:\\Owner\\Dropbox\\[archive]\\cocoro\\GRAPHIC\\move\\KanColle-140101-07224489.png"
+				))
 			)
-		) 
-		filename
+			(map (lambda(load-file) 
+				(let*
+					(
+						(save-file (string-append load-file "-move.png"))
+						(offset '(20 20))
+						(size '(1280 720))
+						(image (car (gimp-image-new (car size) (cadr size) RGB))) ;; imageã‚’ä½œæˆ
+						(layer-back (car (gimp-layer-new image (car size) (cadr size) RGB-IMAGE "èƒŒæ™¯" 0 NORMAL-MODE))) ;; èƒŒæ™¯ãƒ¬ã‚¤ãƒ¤ãƒ¼ã‚’ä½œæˆ
+						(layer-img (car (gimp-file-load-layer RUN-NONINTERACTIVE image load-file))) ;; èƒŒæ™¯ãƒ¬ã‚¤ãƒ¤ãƒ¼ã‚’ä½œæˆ
+						(disp (car (gimp-display-new image)))
+					)
+					(gimp-image-insert-layer image layer-back 0 0) ;; ãƒ¬ã‚¤ãƒ¤ãƒ¼ã‚’imageã«é–¢é€£ã¥ã‘
+					(gimp-image-insert-layer image layer-img 0 0)
+					(gimp-layer-set-offsets layer-img (car offset) (cadr offset)) ;; ãƒ¬ã‚¤ãƒ¤ãƒ¼ã‚’(20 20)ã«ç§»å‹•
+					(set! layer-img (car (gimp-image-merge-visible-layers image EXPAND-AS-NECESSARY))) ;; pngä¿å­˜ã®ãŸã‚ãƒ¬ã‚¤ãƒ¤ãƒ¼ã‚’çµåˆ
+					(gimp-file-save RUN-NONINTERACTIVE image layer-img save-file load-file) ;; ä¿å­˜
+					(gimp-display-delete disp) ;; é–‰ã˜ã‚‹
+				)
+			)
+			filename
+			)
 		)
-	)
 	(gimp-displays-flush)
 )

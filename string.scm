@@ -26,7 +26,7 @@
 )
 (define 
 	(load-string-from-file input)
-	(with-input-from-file input ;�X�R�[�v���Ńf�t�H���g�|�[�g�̕ύX
+	(with-input-from-file input ;スコープ内でデフォルトポートの変更
 		(lambda ()
 			(let loop
 				(
@@ -44,3 +44,16 @@
 		)
 	)
 )
+(define
+	(string-list->string string-list)
+	(let loop
+		(
+			(str (car string-list))
+			(in (cdr string-list))
+		)
+		(if (null? in)
+			str
+			(loop
+				(string-append str (car in))
+				(cdr in)
+			))))
